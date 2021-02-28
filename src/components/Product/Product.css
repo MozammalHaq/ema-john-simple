@@ -1,0 +1,16 @@
+.product {
+    display: flex;
+    border-bottom: 1px solid gray;
+}
+.product-heading{
+    font-weight: 400;
+    color: blue;
+}
+.cart-btn{
+    display: inline-block;
+    background-color: goldenrod;
+    padding: 8px 40px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+}
