@@ -4,16 +4,19 @@ import { getDatabaseCart, processOrder, removeFromDatabaseCart } from '../../uti
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import happyImage from '../../images/giphy.gif';
+import { useHistory } from 'react-router';
 
 const Review = () => {
     const [cart, setCart] = useState([]);
     //set state after order placed.
     const [orderPlaced, setOrderPlaed] = useState(false);
+    const history = useHistory();
 
-    const handlePlaceOrder = () => {
-        setCart([]);//কার্ট কে খালি করে দিবে।
-        setOrderPlaed(true);
-        processOrder();
+    const handleProcidCheckout = () => {
+        // setCart([]);//কার্ট কে খালি করে দিবে।
+        // setOrderPlaed(true);
+        // processOrder();
+        history.push('/shipment');
     }
 
     const removeProduct = (productKey) => {
@@ -36,19 +39,19 @@ const Review = () => {
         setCart(cartProducts);
     }, []);
 
-    let thankyou; 
-    if(orderPlaced){
-        thankyou = <img src={happyImage} alt=""/>
+    let thankyou;
+    if (orderPlaced) {
+        thankyou = <img src={happyImage} alt="" />
     }
     return (
         <div className="twin-container">
             <div className="product-container">
                 {/* <h1>Cart Items: {cart.length}</h1> */}
                 {
-                    cart.map(pd => <ReviewItem 
+                    cart.map(pd => <ReviewItem
                         product={pd}
-                        removeProduct = {removeProduct}
-                        ></ReviewItem>)
+                        removeProduct={removeProduct}
+                    ></ReviewItem>)
                 }
                 {
                     thankyou
@@ -56,7 +59,7 @@ const Review = () => {
             </div>
             <div className="cart-container">
                 <Cart cart={cart}>
-                    <button onClick={handlePlaceOrder} className="cart-btn">Place Order</button>
+                    <button onClick={handleProcidCheckout} className="cart-btn">Procid Checkout</button>
                 </Cart>
             </div>
         </div>
